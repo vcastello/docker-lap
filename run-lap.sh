@@ -58,9 +58,4 @@ fi
 
 # Run Apache:
 2>/dev/null /usr/sbin/apachectl stop
-if [ $LOG_LEVEL == 'debug' ]; then
-    /usr/sbin/apachectl start -DFOREGROUND -e debug
-else
-    &>/dev/null /usr/sbin/apachectl start -DFOREGROUND
-fi
-
+2>/dev/null /usr/sbin/apachectl start
