@@ -53,14 +53,14 @@ fi
 /usr/bin/sed -i "s/\;date\.timezone\ \=/date\.timezone\ \=\ ${DATE_TIMEZONE}/" /etc/php.ini
 
 # Run Postfix
-2>/dev/null /usr/sbin/postfix stop
-/usr/sbin/postfix start
+# 2>/dev/null /usr/sbin/postfix stop
+# /usr/sbin/postfix start
 
 # Run Apache:
-2>/dev/null /usr/sbin/apachectl -k stop
+2>/dev/null /usr/sbin/apachectl stop
 if [ $LOG_LEVEL == 'debug' ]; then
-    /usr/sbin/apachectl -DFOREGROUND -k start -e debug
+    /usr/sbin/apachectl start -DFOREGROUND -e debug
 else
-    &>/dev/null /usr/sbin/apachectl -DFOREGROUND -k start
+    &>/dev/null /usr/sbin/apachectl start -DFOREGROUND
 fi
 
